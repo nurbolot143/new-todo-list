@@ -1,0 +1,12 @@
+@import "./vars";
+
+.main {
+  margin: 0 auto;
+  text-align: center;
+  margin-left: -300px;
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 55px;
+  }
+}

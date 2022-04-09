@@ -1,0 +1,21 @@
+@import "./vars";
+
+.day {
+  width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 30px;
+  &__list {
+    margin: 20px 50px;
+  }
+
+  &__item {
+    margin-bottom: 15px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
