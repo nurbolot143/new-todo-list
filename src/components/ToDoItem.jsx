@@ -1,31 +1,33 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import DeleteIcon from "@mui/icons-material/Delete";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 
-const ToDoItem = (props) => {
-  const [checked, setChecked] = useState(false);
+const ToDoItem = ({ label, id, completed, onToggleCompleted, onDeleteTask, onValueChange }) => {
+  const [inputChecked, setInputChecked] = useState(completed);
+  const [inputValue, setInputValue] = useState(label);
 
-  const handleChecked = (event) => {
-    props.onChecked(
-      event.target.checked
-        ? { checked: true, id: props.id }
-        : { checked: false, id: props.id }
-    );
-  };
+  const checkedChange = () => {
+    setInputChecked(!inputChecked);
+
+    onToggleCompleted(id)
+  }
+
+  const valueChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    onValueChange(id, value)
+  }
 
   return (
     <li className="day__item">
       <div className="day__wrapper">
-        {props.text}
+        <input type="text"
+          value={inputValue}
+          onChange={valueChange}
+          style={{ flex: '1 1 auto', fontSize: 'inherit' }}
+        />
         <div style={{ display: "flex", alignItems: "center" }}>
-          {/* <BorderColorIcon
-            color="primary"
-            style={{
-              fontSize: 30,
-              cursor: "pointer",
-            }}
-            onClick={() => props.onUpdate(props.text)}
-          /> */}
 
           <DeleteIcon
             className="deleteIcon"
@@ -35,13 +37,14 @@ const ToDoItem = (props) => {
               cursor: "pointer",
             }}
             onClick={() => {
-              props.onDelete(props.id);
+              onDeleteTask(id)
             }}
           />
           <input
             style={{ width: 30, height: 30 }}
             type="checkbox"
-            onChange={handleChecked}
+            checked={inputChecked}
+            onChange={checkedChange}
           />
         </div>
       </div>
