@@ -9,16 +9,17 @@ import "./components/Nav";
 
 function App() {
   const today = new Date().getDay();
-  const days = ["sanday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
   const [activeDay, setActiveDay] = useState(days[today]);
-  const [idCounter, setIdCounter] = useState(1);
+  const [idCounter, setIdCounter] = useState(0);
 
   const [data, setData] = useState([
-    { id: 0, task: 'buy milk', completed: false, day: 'wednesday' },
+    { id: 454, task: 'buy milk', completed: false, day: 'sunday' }
   ]);
 
   const addTask = (task) => {
+
     setData((tasks) => [
       ...tasks, { id: idCounter, task, completed: false, day: activeDay }
     ])
@@ -52,32 +53,44 @@ function App() {
 
   return (
     <div className="App">
-      <Nav onToggleActiveDay={toggleActiveDay} data={data} />
-      <div className="main">
-        <h1 className="main__title">Задачи</h1>
 
-        <InputArea onAddTask={addTask} />
+      <header className="header">
+        <div className="header__left">Дни недели</div>
+        <div className="header__right">Задачи</div>
+      </header>
 
-        <div className="day">
-          <ol className="day__list">
-            {
-              data.filter(({ day }) => day === activeDay)
-                .map(({ task, id, completed }, idx) => {
-                  return (
-                    <ToDoItem
-                      key={`${id}__${idx}`}
-                      id={id}
-                      label={task}
-                      completed={completed}
-                      onToggleCompleted={toggleCompleted}
-                      onDeleteTask={deleteTask}
-                      onValueChange={changeValue} />
-                  )
-                })
-            }
-          </ol>
+      <div className="wrapper">
+        <Nav onToggleActiveDay={toggleActiveDay} data={data} active={activeDay} />
+
+        <div className="main">
+
+          <div className="main__wrapper">
+            <InputArea onAddTask={addTask} />
+
+            <div className="day">
+              <ul className="day__list">
+                {
+                  data.filter(({ day }) => day === activeDay)
+                    .map(({ task, id, completed }, idx) => {
+                      return (
+                        <ToDoItem
+                          key={`${id}__${idx}`}
+                          id={id}
+                          index={idx + 1}
+                          label={task}
+                          completed={completed}
+                          onToggleCompleted={toggleCompleted}
+                          onDeleteTask={deleteTask}
+                          onValueChange={changeValue} />
+                      )
+                    })
+                }
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   );
 }

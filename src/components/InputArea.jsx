@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-import AddBoxIcon from "@mui/icons-material/AddBox";
-import TextField from "@mui/material/TextField";
-
 const InputArea = (props) => {
    const [inputText, setInputText] = useState("");
 
@@ -11,28 +8,25 @@ const InputArea = (props) => {
    };
 
    return (
-      <div className="form">
-         <TextField
-            sx={{ width: "350px" }}
-            id="outlined-basic"
-            label="Задача"
-            variant="outlined"
+      <form
+         className="form"
+         onSubmit={(e) => {
+            e.preventDefault()
+            if (inputText.trim()) {
+               props.onAddTask(inputText);
+               setInputText("");
+            }
+         }}
+      >
+         <input
+            className="form__input"
+            placeholder="Введите задачу"
             onChange={handleChange}
             value={inputText}
          />
 
-         <AddBoxIcon
-            onClick={() => {
-               if (inputText.trim()) {
-                  props.onAddTask(inputText);
-                  setInputText("");
-               }
-            }}
-            style={{ fontSize: 50, cursor: "pointer" }}
-            color="primary"
-            className="form__btn"
-         />
-      </div>
+         <button className="form__btn" type="submit">Добавить</button>
+      </form>
    );
 };
 
