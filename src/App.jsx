@@ -12,11 +12,9 @@ function App() {
   const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
   const [activeDay, setActiveDay] = useState(days[today]);
-  const [idCounter, setIdCounter] = useState(1);
+  const [idCounter, setIdCounter] = useState(0);
 
-  const [data, setData] = useState([
-    { id: 0, task: 'buy milk', completed: true, day: days[today] }
-  ]);
+  const [data, setData] = useState([]);
 
   const addTask = (task) => {
 
@@ -51,6 +49,31 @@ function App() {
     )
   }
 
+  const activeTaskList = data.filter(({ day }) => day === activeDay);
+
+  const EmptyList = () => {
+    return (
+      <h2 className="empty-list">Спиcок пуст, добавьте задачи!</h2>
+    )
+  }
+
+  const emptyList = activeTaskList.length > 0 ? null : <EmptyList />
+
+  const taskList = activeTaskList.length === 0 ? null :
+    activeTaskList.map(({ task, id, completed }, idx) => {
+      return (
+        <ToDoItem
+          key={`${id}__${idx}`}
+          id={id}
+          index={idx + 1}
+          label={task}
+          completed={completed}
+          onToggleCompleted={toggleCompleted}
+          onDeleteTask={deleteTask}
+          onValueChange={changeValue} />
+      )
+    })
+
   return (
     <div className="App">
 
@@ -69,22 +92,8 @@ function App() {
 
             <div className="day">
               <ul className="day__list">
-                {
-                  data.filter(({ day }) => day === activeDay)
-                    .map(({ task, id, completed }, idx) => {
-                      return (
-                        <ToDoItem
-                          key={`${id}__${idx}`}
-                          id={id}
-                          index={idx + 1}
-                          label={task}
-                          completed={completed}
-                          onToggleCompleted={toggleCompleted}
-                          onDeleteTask={deleteTask}
-                          onValueChange={changeValue} />
-                      )
-                    })
-                }
+                {taskList}
+                {emptyList}
               </ul>
             </div>
           </div>
