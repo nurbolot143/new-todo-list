@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ToDoItem = ({
-  label, id, completed, onToggleCompleted, onDeleteTask, onValueChange, index
-}) => {
+const ToDoItem = (props) => {
+  const { label, id, completed, onToggleCompleted, onDeleteTask, onValueChange, index } = props;
+
   const [inputChecked, setInputChecked] = useState(completed);
   const [inputValue, setInputValue] = useState(label);
 
@@ -21,6 +21,8 @@ const ToDoItem = ({
     onValueChange(id, value)
   }
 
+  const inputStyle = inputChecked ? { textDecoration: 'line-through' } : null;
+
   return (
     <li className="day__item">
       <div className="day__number">
@@ -30,7 +32,7 @@ const ToDoItem = ({
         value={inputValue}
         onChange={valueChange}
         className='day__input'
-        style={inputChecked ? { textDecoration: 'line-through' } : null}
+        style={inputStyle}
       />
       <div className="day__icons">
 

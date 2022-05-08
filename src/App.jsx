@@ -5,7 +5,6 @@ import InputArea from './components/InputArea';
 import ToDoItem from "./components/ToDoItem";
 
 import "./App.scss";
-import "./components/Nav";
 
 function App() {
   const today = new Date().getDay();
@@ -86,7 +85,6 @@ function App() {
         <Nav onToggleActiveDay={toggleActiveDay} data={data} active={activeDay} />
 
         <div className="main">
-
           <div className="main__wrapper">
             <InputArea onAddTask={addTask} />
 
@@ -96,8 +94,10 @@ function App() {
                 {emptyList}
               </ul>
             </div>
+
           </div>
         </div>
+
       </div>
 
     </div>

@@ -7,17 +7,16 @@ const InputArea = (props) => {
       setInputText(event.target.value);
    };
 
+   const onSubmit = (event) => {
+      event.preventDefault()
+      if (inputText.trim()) {
+         props.onAddTask(inputText);
+         setInputText("");
+      }
+   }
+
    return (
-      <form
-         className="form"
-         onSubmit={(e) => {
-            e.preventDefault()
-            if (inputText.trim()) {
-               props.onAddTask(inputText);
-               setInputText("");
-            }
-         }}
-      >
+      <form className="form" onSubmit={onSubmit} >
          <input
             className="form__input"
             placeholder="Введите задачу"
