@@ -1,0 +1,15 @@
+@import "../vars";
+
+.main {
+  padding: 50px;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 75vh;
+    background: $light;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.38);
+  }
+}

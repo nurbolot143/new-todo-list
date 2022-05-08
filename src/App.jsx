@@ -12,10 +12,10 @@ function App() {
   const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
   const [activeDay, setActiveDay] = useState(days[today]);
-  const [idCounter, setIdCounter] = useState(0);
+  const [idCounter, setIdCounter] = useState(1);
 
   const [data, setData] = useState([
-    { id: 454, task: 'buy milk', completed: false, day: 'sunday' }
+    { id: 0, task: 'buy milk', completed: true, day: days[today] }
   ]);
 
   const addTask = (task) => {

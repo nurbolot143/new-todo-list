@@ -1,0 +1,57 @@
+@import "../vars";
+
+.day {
+  overflow-y: scroll;
+  height: 100%;
+
+  &__item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $gray;
+    padding: 0 30px 0 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__number {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $secondary-color;
+    color: $light;
+  }
+
+  &__input {
+    flex: 1 1 auto;
+    font-size: inherit;
+    padding-left: 30px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__checkbox {
+    height: 30px;
+    width: 30px;
+  }
+
+  input[type="checkbox"] {
+    filter: invert(0%) hue-rotate(190deg) brightness(1.9);
+  }
+
+  input[type="checkbox"]:before {
+    font-family: "FontAwesome";
+    content: "";
+    background: transparent;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid rgb(189, 15, 15);
+  }
+}

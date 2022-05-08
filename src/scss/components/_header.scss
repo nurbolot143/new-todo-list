@@ -1,0 +1,25 @@
+@import "../vars";
+
+.header {
+  display: flex;
+  text-transform: uppercase;
+  background: $secondary-color;
+  font-weight: 600;
+  text-align: center;
+  font-size: 25px;
+
+  &__left {
+    width: 250px;
+    height: 25px;
+    padding: 15px 0;
+    color: $light;
+  }
+
+  &__right {
+    padding: 15px 0;
+    flex: 1 1 auto;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.38);
+    background: $accent-color;
+    color: $light;
+  }
+}

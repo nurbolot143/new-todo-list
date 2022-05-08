@@ -1,0 +1,26 @@
+@import "../vars";
+
+.form {
+  padding: 0 30px;
+  border-top: 3px solid $secondary-color;
+  border-bottom: 1px solid $gray;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+
+  &__input {
+    height: 100%;
+    padding: 0 30px;
+    font-size: 20px;
+    flex: 1 1 auto;
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    color: $light;
+    background: $accent-color;
+    padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+}

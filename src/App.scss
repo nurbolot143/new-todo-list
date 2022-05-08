@@ -1,5 +1,10 @@
 @import "./scss/global";
 @import "./scss/vars";
+@import "./scss/components/header";
+@import "./scss/components/nav";
+@import "./scss/components/main";
+@import "./scss/components/day";
+@import "./scss/components/form";
 
 body {
   font-family: $main-font;
@@ -7,7 +12,6 @@ body {
 }
 
 .App {
-  // padding: 30px;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -15,146 +19,8 @@ body {
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  text-transform: uppercase;
-  background: $secondary-color;
-  font-weight: 600;
-  text-align: center;
-  font-size: 25px;
-
-  &__left {
-    width: 250px;
-    height: 25px;
-    padding: 15px 0;
-    color: $light;
-  }
-
-  &__right {
-    padding: 15px 0;
-    flex: 1 1 auto;
-    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.38);
-    background: $accent-color;
-    color: $light;
-  }
-}
-
 .wrapper {
   flex: 1 1 auto;
   position: relative;
   display: flex;
-}
-
-.nav {
-  text-align: center;
-  display: grid;
-  grid-template-columns: 250px;
-  grid-template-rows: repeat(7, 1fr);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.38);
-  background: $accent-color;
-
-  &__link {
-    position: relative;
-    background: transparent;
-    color: $light;
-    z-index: 1;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 600;
-    border-bottom: 3px solid $gray;
-
-    &-active {
-      background: rgb(104, 190, 186);
-    }
-
-    span {
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      height: 3px;
-      width: 0;
-      background: $secondary-color;
-      z-index: -1;
-    }
-  }
-}
-
-.main {
-  padding: 50px;
-  width: 100%;
-
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 75vh;
-    background: $light;
-    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.38);
-  }
-}
-
-.form {
-  padding: 0 30px;
-  border-top: 3px solid $secondary-color;
-  border-bottom: 1px solid $gray;
-  display: flex;
-  align-items: center;
-  min-height: 60px;
-
-  &__input {
-    height: 100%;
-    padding: 0 30px;
-    font-size: 20px;
-    flex: 1 1 auto;
-  }
-
-  &__btn {
-    text-transform: uppercase;
-    color: $light;
-    background: $accent-color;
-    padding: 5px 20px;
-    font-size: 20px;
-    border-radius: 5px;
-  }
-}
-
-.day {
-  overflow-y: scroll;
-  height: 100%;
-
-  &__item {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid $gray;
-    padding: 0 30px 0 0;
-    font-size: 24px;
-    font-weight: 600;
-  }
-
-  &__number {
-    width: 60px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $secondary-color;
-    color: $light;
-  }
-
-  &__input {
-    flex: 1 1 auto;
-    font-size: inherit;
-    padding-left: 30px;
-  }
-
-  &__icons {
-    display: flex;
-    align-items: center;
-  }
-
-  &__checkbox {
-    height: 30px;
-    width: 30px;
-  }
 }
